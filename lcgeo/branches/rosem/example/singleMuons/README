@@ -1,0 +1,14 @@
+This is an example for the creation of LCIO files for tracking resolution studies.
+
+0. init all environment, e.g. ilcsoft including lcio, root, dd4hep and ddsim; ensure that pyLCIO is active (e.g. extend the PYTHONPATH, etc.)
+
+1. run the create script for the generation of single muons, stored as MCParticle in a LCIO file:
+ 	python create_singleMuons_for_tracking-resolution.py
+
+ -- this creates 32 files of single muons in 4 polar angles (10, 20, 40, 85 degrees) x 8 energies (1,3,5,10,15,25,50,100 GeV) with random azimuthal angle
+
+2. use the convenience script to create the xml steering files:
+    . singleMuons_XMLcreatorscript.sh
+
+3. run the simulation on these files, use convenience script (and pipe the output)
+    . runSimulation-parallel4core.sh >& output.txt
